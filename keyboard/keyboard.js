@@ -6,8 +6,7 @@ const Keyboard = {
     },
 
     eventHandlers: {
-		oninput: null,
-		onclose: null
+		oninput: null
     },
 
 	properties: {
@@ -34,7 +33,7 @@ const Keyboard = {
 		// Use keyboard for elements with .use-keyboard-input
 		document.querySelectorAll('.use-keyboard-input').forEach(element => {
 			element.addEventListener('focus', () => {
-				this.open(element.value, currentValue => {
+				this.open(currentValue => {
 					element.value = currentValue;
 				});
 			});
@@ -47,7 +46,7 @@ const Keyboard = {
 			'1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'backspace',
 			'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',
 			'caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'enter',
-			'done', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '?',
+			'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '?',
 			'space'
 		];
 
@@ -108,17 +107,6 @@ const Keyboard = {
 					});
 
 					break;
-
-				case 'done':
-					keyElement.classList.add('keyboard__key--wide', 'keyboard__key--dark');
-					keyElement.innerHTML = createIconHTML('check_circle');
-
-					keyElement.addEventListener('click', () => {
-						this.close();
-						this._triggerEvent('onclose');
-					});
-
-					break;
 				
 				default:
 					keyElement.textContent = key.toLowerCase();
@@ -160,22 +148,13 @@ const Keyboard = {
 
 	},
 
-	open(initialValue, oninput, onclose) {
-		this.properties.value = initialValue || '';
+	open(oninput) {
 		this.eventHandlers.oninput = oninput;
-		this.eventHandlers.onclose = onclose;
 		this.elements.main.classList.remove('keyboard--hidden');
-	},
-
-	close() {
-		this.properties.value = '';
-		this.eventHandlers.oninput = oninput;
-		this.eventHandlers.onclose = onclose;
-		this.elements.main.classList.add('keyboard--hidden');
-
 	}
 };
 
 window.addEventListener('DOMContentLoaded', function () {
 	Keyboard.init();
+	document.getElementById('textbox').focus();
 });
