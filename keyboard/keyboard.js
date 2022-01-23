@@ -43,11 +43,10 @@ const Keyboard = {
 	_createKeys() {
 		const fragment = document.createDocumentFragment();
 		const keyLayout = [
-			'1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'backspace',
 			'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',
-			'caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'enter',
-			'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '?',
-			'space'
+			'caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'clear',
+			'z', 'x', 'c', 'v', 'b', 'n', 'm', 'backspace',
+			'space', 'enter'
 		];
 
 		// Create html for an icon
@@ -57,13 +56,24 @@ const Keyboard = {
 
 		keyLayout.forEach(key => {
 			const keyElement = document.createElement('button');
-			const insertLineBreak = ['backspace', 'p', 'enter', '?'].indexOf(key) !== -1;
+			const insertLineBreak = ['p', 'clear', 'backspace'].indexOf(key) !== -1;
 
 			// Add attributes
 			keyElement.setAttribute('type', 'button');
 			keyElement.classList.add('keyboard__key');
 
 			switch (key) {
+				case 'clear':
+					keyElement.classList.add('keyboard__key--wide', 'keyboard__key--dark');
+					keyElement.innerHTML = createIconHTML('delete');
+
+					keyElement.addEventListener('click', () => {
+						this.properties.value = '';
+						this._triggerEvent('oninput');
+					});
+
+					break;
+				
 				case 'backspace':
 					keyElement.classList.add('keyboard__key--wide');
 					keyElement.innerHTML = createIconHTML('backspace');
