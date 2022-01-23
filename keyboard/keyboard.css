@@ -4,7 +4,7 @@
   bottom: 0;
   width: 100%;
   padding: 5px 0;
-  background: #004134;
+  background: #242424;
   box-shadow: 0 0 50px rgba(0, 0, 0, .5);
   user-select: none;
   transition: bottom .4s;
@@ -26,7 +26,7 @@
   margin: 3px;
   border-radius: 4px;
   border: none;
-  background-color: rgba(255, 255, 255, .2);
+  background-color: #525252;
   color: #ffffff;
   font-size: 1.05rem;
   outline: none;
@@ -41,7 +41,7 @@
 }
 
 .keyboard__key:active {
-  background-color: rgba(255, 255, 255, .12);
+  background-color: rgba(255, 255, 255, 0.384);
 }
 
 .keyboard__key--wide {
@@ -69,5 +69,36 @@
 }
 
 .keyboard__key--dark {
-  background-color: rgba(0, 0, 0, .25);
+  background-color: #383838;
 }
+
+/* Dropdown Content (Hidden by Default) */
+.letter-menu {
+  display: none;
+  position: absolute;
+  background-color: #525252;
+  min-width: 160px;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.letter-menu a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-radius: 4px;
+  border: none;
+}
+
+/* Change color of dropdown links on hover */
+.letter-menu a:hover {
+  background-color: dodgerblue;
+
+}
+
+/* Show the dropdown menu on hover */
+.keyboard__key--character:hover .letter-menu {display: block;}
