@@ -57,13 +57,34 @@ const Keyboard = {
 			const keyElement = document.createElement('button');
 			const insertLineBreak = keyLayouts.enQWERTYLineBreaks.indexOf(key) !== -1;
 
-			// Add attributes
+			// Add attributes to keyboard key
 			keyElement.setAttribute('type', 'button');
 			keyElement.classList.add('keyboard__key');
 
 			// Create symbol selector menu
 			const dropDownDiv = document.createElement('div');
 			dropDownDiv.classList.add('letter-menu');
+
+			// Define display behavoir of symbol selector menu
+			keyElement.addEventListener('click', (e) => {
+				if (!dropDownDiv.style.display) {
+					dropDownDiv.style.display = 'block';
+				} else {
+					dropDownDiv.removeAttribute('style');
+				}
+			}, true);
+
+			keyElement.addEventListener('mouseout', (e) => {
+				if (!keyElement.contains(e.relatedTarget)) {
+					dropDownDiv.removeAttribute('style');
+				}
+			});
+
+			keyElement.addEventListener('focusout', (e) => {
+				if (!keyElement.contains(e.relatedTarget)){
+					dropDownDiv.removeAttribute('style');
+				}
+			});
 
 			switch (key) {
 				case 'clear':
@@ -121,28 +142,30 @@ const Keyboard = {
 
 					break;
 
-				// characters
-				default:
+				default: // letters and symbols
 					keyElement.classList.add('keyboard__key--character');
 					keyElement.textContent = key.toLowerCase();
 
 					for (const symbol in keyLayout[key]) {
-						const symbolElement = document.createElement('a');
-						symbolElement.textContent = symbol + ' | ' + keyLayout[key][symbol]
+						// Create symbol button
+						const symbolElement = document.createElement('button');
+						symbolElement.textContent = symbol + ' | ' + keyLayout[key][symbol];
+						// Add attributes to symbol
+						symbolElement.setAttribute('type', 'button');
+						symbolElement.classList.add('symbol');
+						// Add symbol to symbol selector menu
 						dropDownDiv.appendChild(symbolElement);
 
-						symbolElement.addEventListener('click', () => {
+						symbolElement.addEventListener('click', (e) => {
 							this.properties.value += symbol;
 							this._triggerEvent('oninput');
+							dropDownDiv.style.display = null;
+							keyElement.focus();
 						});
 					}
 
+					// Add symbol selector menu to keyboard key
 					keyElement.appendChild(dropDownDiv);
-
-					// keyElement.addEventListener('click', () => {
-					// 	this.properties.value += this.properties.capsLock ? key.toUpperCase() : key.toLowerCase();
-					// 	this._triggerEvent('oninput');
-					// });
 
 					break;
 			};
