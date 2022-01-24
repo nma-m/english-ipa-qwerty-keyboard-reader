@@ -1,5 +1,5 @@
 export const enQWERTYLayout = {
-  'q': { 'kw': 'quite' },
+  'q': { '⟨q⟩': 'quite' },
   'w': { 'w': 'wine', 'hw': 'whine' },
   'e': { 'ɛ': 'dress', 'iː': 'fleece'},
   'r': { 'r': 'rye' },
