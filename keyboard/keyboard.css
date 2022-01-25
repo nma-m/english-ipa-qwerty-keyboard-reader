@@ -5,7 +5,6 @@
   width: 100%;
   padding: 5px 0;
   background: rgb(54, 54, 56);
-  box-shadow: 0 0 50px rgba(0, 0, 0, .5);
   user-select: none;
   transition: bottom .4s;
   text-align: center;
@@ -72,34 +71,41 @@
   background-color: rgb(84, 84, 86);
 }
 
-/* Dropdown Content (Hidden by Default) */
-.letter-menu {
+.symbol-selector {
   display: none;
   position: absolute;
   background-color: rgb(124, 124, 128);
-  max-height: 116px;
+  max-height: 90px;
   overflow-y: scroll;
-  width: 120px;   
+  width: auto;
   padding: 4px;
   border-radius: 4px;
-  border: none;
   z-index: 1;
   cursor: default;
 }
 
-/* Show the dropdown menu when hovering over key */
-.keyboard__key--character:hover .letter-menu {
+.keyboard__key--character:hover .symbol-selector {
   display: block;
 }
 
-/* Links inside the dropdown */
+.symbol-selector::-webkit-scrollbar {
+  width: 4px;
+}
+
+.symbol-selector::-webkit-scrollbar-thumb {
+  background: rgb(84, 84, 86);
+  border-radius: 4px;
+}
+
 .symbol {
-  color: white;
+  display: block;
+  white-space: nowrap;
+  width: auto;
   background-color: rgb(124, 124, 128);
+  color: white;
   margin: auto;
   padding: 8px 6px;   
   text-decoration: none;
-  display: block;
   border-radius: 4px;
   border: none;
   cursor: pointer;

@@ -63,7 +63,7 @@ const Keyboard = {
 
 			// Create symbol selector menu
 			const dropDownDiv = document.createElement('div');
-			dropDownDiv.classList.add('letter-menu');
+			dropDownDiv.classList.add('symbol-selector');
 
 			// Define display behavoir of symbol selector menu
 			keyElement.addEventListener('click', (e) => {
