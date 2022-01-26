@@ -43,6 +43,10 @@
   background-color: rgba(255, 255, 255, 0.384);
 }
 
+.keyboard__key--character:hover {
+  border-radius: 0px 0px 4px 4px;
+}
+
 .keyboard__key--wide {
   width: 12%;
 }
@@ -73,13 +77,15 @@
 
 .symbol-selector {
   display: none;
-  position: absolute;
+  position: absolute; 
+  left: 0;
+  bottom: 100%;
   background-color: rgb(124, 124, 128);
-  max-height: 90px;
+  max-height: 95px;
   overflow-y: scroll;
   width: auto;
   padding: 4px;
-  border-radius: 4px;
+  border-radius: 4px 4px 4px 0px;
   z-index: 1;
   cursor: default;
 }

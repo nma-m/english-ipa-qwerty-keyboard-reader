@@ -68,8 +68,10 @@ const Keyboard = {
 			// Define display behavoir of symbol selector menu
 			keyElement.addEventListener('click', (e) => {
 				if (!dropDownDiv.style.display) {
+					keyElement.style.borderRadius = '0px 0px 4px 4px';
 					dropDownDiv.style.display = 'block';
 				} else {
+					keyElement.style.borderRadius = '4px';
 					dropDownDiv.removeAttribute('style');
 				}
 			}, true);
@@ -82,6 +84,7 @@ const Keyboard = {
 
 			keyElement.addEventListener('focusout', (e) => {
 				if (!keyElement.contains(e.relatedTarget)){
+					keyElement.style.borderRadius = '4px';
 					dropDownDiv.removeAttribute('style');
 				}
 			});
