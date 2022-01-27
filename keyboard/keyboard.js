@@ -13,8 +13,7 @@ const Keyboard = {
 
 	properties: {
 		value: '',
-		caretPos: 0,
-		capsLock: false
+		caretPos: 0
 	},
 
 	init() {
@@ -190,17 +189,6 @@ const Keyboard = {
 		if (typeof this.eventHandlers[handlerName] == 'function') {
 			this.eventHandlers[handlerName](this.properties.value);
 		}
-	},
-
-	_toggleCapsLock() {
-		this.properties.capsLock = !this.properties.capsLock;
-
-		for (const key of this.elements.keys) {
-			if (key.childElementCount === 0) {
-				key.textContent = this.properties.capsLock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
-			}
-		}
-
 	},
 
 	open(oninput) {
