@@ -9,6 +9,8 @@ export const enQWERTYLayout = {
   'i': { 'aɪ': 'price', 'ɪ': 'kit' },
   'o': { 'ɒ': 'lot', 'aʊ': 'mouth', 'oʊ': 'goat', 'ɔː': 'thought', 'ɔɪ': 'choice', 'ʊ': 'foot' },
   'p': { 'p': 'pie' },
+  '[': { '[': 'open square bracket' },
+  ']': { ']': 'close square bracket' },
   'clear': null,
   'a': { 'ɑː': 'palm', 'æ': 'trap', 'eɪ': 'face' },
   's': { 's': 'sigh', 'ʃ': 'shy' },
@@ -30,8 +32,7 @@ export const enQWERTYLayout = {
   'm': { 'm': 'my' },
   'ˌ': { 'ˌ': 'secondary stress' },
   '.': { '.': 'syllable break' },
-  'enter': null,
+  '/': { '/': 'slash' },
   'space': null,
-  'caps': null,
 };
-export const enQWERTYLineBreaks = ['clear', 'backspace', 'enter'];
+export const enQWERTYLineBreaks = ['clear', 'backspace', '/'];

@@ -13,6 +13,7 @@ const Keyboard = {
 
 	properties: {
 		value: '',
+		caretPos: 0,
 		capsLock: false
 	},
 
@@ -39,6 +40,11 @@ const Keyboard = {
 					element.value = currentValue;
 				});
 			});
+			
+			element.addEventListener('blur', () => {
+				this.properties.value = element.value;
+				this.properties.caretPos = element.selectionStart;
+			});
 		});
 	},
 
@@ -47,9 +53,27 @@ const Keyboard = {
 
 		const keyLayout = keyLayouts.enQWERTYLayout;
 
-		// Create html for an icon
+		// [helper] Create html for an icon
 		const createIconHTML = (icon_name) => {
 			return `<i class="material-icons">${icon_name}</i>`;
+		}
+
+		// [helper] Insert input at caret
+		const insertAtCaret = (input) => {
+			const textBox = document.getElementById('textbox');
+			if (textBox.selectionStart == textBox.selectionEnd) { // caret
+				this.properties.value = this.properties.value.substring(0, this.properties.caretPos)
+					+ input
+					+ this.properties.value.substring(this.properties.caretPos);
+				this.properties.caretPos += input.length;
+			} else { // replace selection
+				var startPos = textBox.selectionStart;
+				var endPos = textBox.selectionEnd;
+				this.properties.value = this.properties.value.substring(0, startPos)
+					+ input
+					+ this.properties.value.substring(endPos, this.properties.value.length);
+				this.properties.caretPos += input.length;
+			}
 		}
 
 		for (const key in keyLayout) {
@@ -68,10 +92,8 @@ const Keyboard = {
 			// Define display behavoir of symbol selector menu
 			keyElement.addEventListener('click', (e) => {
 				if (!dropDownDiv.style.display) {
-					keyElement.style.borderRadius = '0px 0px 4px 4px';
 					dropDownDiv.style.display = 'block';
 				} else {
-					keyElement.style.borderRadius = '4px';
 					dropDownDiv.removeAttribute('style');
 				}
 			}, true);
@@ -84,7 +106,6 @@ const Keyboard = {
 
 			keyElement.addEventListener('focusout', (e) => {
 				if (!keyElement.contains(e.relatedTarget)){
-					keyElement.style.borderRadius = '4px';
 					dropDownDiv.removeAttribute('style');
 				}
 			});
@@ -96,39 +117,19 @@ const Keyboard = {
 
 					keyElement.addEventListener('click', () => {
 						this.properties.value = '';
+						this.properties.caretPos = 0;
 						this._triggerEvent('oninput');
 					});
 
 					break;
 
 				case 'backspace':
-					keyElement.classList.add('keyboard__key--wide');
+					keyElement.classList.add('keyboard__key--wide', 'keyboard__key--dark');
 					keyElement.innerHTML = createIconHTML('backspace');
 
 					keyElement.addEventListener('click', () => {
 						this.properties.value = this.properties.value.substring(0, this.properties.value.length - 1);
-						this._triggerEvent('oninput');
-					});
-
-					break;
-
-				case 'caps':
-					keyElement.classList.add('keyboard__key--wide', 'keyboard__key--activatable');
-					keyElement.innerHTML = createIconHTML('keyboard_capslock');
-
-					keyElement.addEventListener('click', () => {
-						this._toggleCapsLock();
-						keyElement.classList.toggle('keyboard__key--active', this.properties.capsLock);
-					});
-
-					break;
-
-				case 'enter':
-					keyElement.classList.add('keyboard__key--wide');
-					keyElement.innerHTML = createIconHTML('keyboard_return');
-
-					keyElement.addEventListener('click', () => {
-						this.properties.value += '\n';
+						this.properties.caretPos -= 1;
 						this._triggerEvent('oninput');
 					});
 
@@ -139,7 +140,7 @@ const Keyboard = {
 					keyElement.innerHTML = createIconHTML('space_bar');
 
 					keyElement.addEventListener('click', () => {
-						this.properties.value += ' ';
+						insertAtCaret(' ');
 						this._triggerEvent('oninput');
 					});
 
@@ -160,7 +161,7 @@ const Keyboard = {
 						dropDownDiv.appendChild(symbolElement);
 
 						symbolElement.addEventListener('click', (e) => {
-							this.properties.value += symbol;
+							insertAtCaret(symbol);
 							this._triggerEvent('oninput');
 							dropDownDiv.style.display = null;
 							keyElement.focus();
