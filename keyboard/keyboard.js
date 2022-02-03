@@ -2,7 +2,7 @@ import * as keyLayouts from './keyLayouts.js';
 
 const Keyboard = {
     elements: {
-    	main: null,
+    	keyboardContainer: null,
     	keysContainer: null,
       	keys: []
     },
@@ -18,19 +18,19 @@ const Keyboard = {
 
 	init() {
 		// Create main elements: keyboard and keyboard keys container
-		this.elements.main = document.createElement('div');
+		this.elements.keyboardContainer = document.createElement('div');
 		this.elements.keysContainer = document.createElement('div');
 
 		// Setup main elements
-		this.elements.main.classList.add('keyboard', 'keyboard--hidden');
+		this.elements.keyboardContainer.classList.add('keyboard');
 		this.elements.keysContainer.classList.add('keboard__keys');
 		this.elements.keysContainer.appendChild(this._createKeys());
 
 		this.elements.keys = this.elements.keysContainer.querySelectorAll('.keyboard__key');
 
 		// Add to DOM
-		this.elements.main.appendChild(this.elements.keysContainer);
-		document.body.appendChild(this.elements.main);
+		this.elements.keyboardContainer.appendChild(this.elements.keysContainer);
+		document.getElementsByTagName('main')[0].appendChild(this.elements.keyboardContainer);
 
 		// Use keyboard for elements with .use-keyboard-input
 		document.querySelectorAll('.use-keyboard-input').forEach(element => {
@@ -54,7 +54,7 @@ const Keyboard = {
 
 		// [helper] Create html for an icon
 		const createIconHTML = (icon_name) => {
-			return `<i class="material-icons">${icon_name}</i>`;
+			return `<span class="material-icons-outlined">${icon_name}</span>`;
 		}
 
 		// [helper] Insert input at caret
@@ -193,7 +193,6 @@ const Keyboard = {
 
 	open(oninput) {
 		this.eventHandlers.oninput = oninput;
-		this.elements.main.classList.remove('keyboard--hidden');
 	}
 };
 

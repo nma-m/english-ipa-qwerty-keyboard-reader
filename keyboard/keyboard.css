@@ -1,17 +1,14 @@
 .keyboard {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  padding: 5px 0;
-  background: rgb(54, 54, 56);
+  position: relative;
+  top: 150px;
+  margin: auto;
+  width: 66%;
+  min-width: var(--min-keyboard-width);
+  padding: 3px 0;
+  background: var(--gray3);
   user-select: none;
-  transition: bottom .4s;
   text-align: center;
-}
-
-.keyboard--hidden {
-  bottom: -100%;
+  border-radius: 4px;
 }
 
 .keyboard__keys {
@@ -23,10 +20,12 @@
   width: 6%;
   max-width: 90px;
   margin: 3px;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   border: none;
-  background-color: rgb(124, 124, 128);
-  color: white;
+  background-color: var(--gray6);
+  color: black;
+  font-family: var(--inter);
+  font-weight: 300;
   font-size: 1.05rem;
   cursor: pointer;
   display: inline-flex;
@@ -40,15 +39,19 @@
 }
 
 .keyboard__key:active {
-  background-color: rgba(255, 255, 255, 0.384);
+  background-color: white;
 }
 
 .keyboard__key--character:hover {
-  border-radius: 0px 0px 4px 4px;
+  border-radius: var(--border-radius);
 }
 
 .keyboard__key--wide {
   width: 12%;
+}
+
+.keyboard__key--wide:active {
+  background-color: var(--gray6);
 }
 
 .keyboard__key--extra-wide {
@@ -57,7 +60,7 @@
 }
 
 .keyboard__key--dark {
-  background-color: rgb(84, 84, 86);
+  background-color: var(--gray2);
 }
 
 .symbol-selector {
@@ -65,13 +68,14 @@
   position: absolute; 
   left: 0;
   bottom: 100%;
-  background-color: rgb(124, 124, 128);
+  background-color: var(--gray6);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   max-height: 95px;
-  overflow-y: scroll;
+  overflow-y: auto;
   width: auto;
   padding: 4px;
-  border-radius: 4px 4px 4px 0px;
-  z-index: 1;
+  border-radius: var(--border-radius);
+  z-index: 3;
   cursor: default;
 }
 
@@ -83,30 +87,37 @@
   width: 4px;
 }
 
+.symbol-selector::-webkit-scrollbar-track {
+  display: none;
+}
+
 .symbol-selector::-webkit-scrollbar-thumb {
-  background: rgb(84, 84, 86);
-  border-radius: 4px;
+  background: var(--gray1);
+  border-radius: var(--border-radius);
 }
 
 .symbol {
   display: block;
   white-space: nowrap;
   width: auto;
-  background-color: rgb(124, 124, 128);
-  color: white;
+  background-color: var(--gray6);
+  color: black;
+  font-family: var(--inter);
+  font-weight: 300;
   margin: auto;
   padding: 8px 6px;   
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   border: none;
   cursor: pointer;
 }
 
 .symbol:hover,
 .symbol:focus  {
-  background-color: rgb(64, 156, 255);
+  background-color: var(--blue);;
+  color: var(--gray6);
 }
 
 .symbol:active {
-  background-color: rgb(50, 173, 230  );
+  background-color: var(--active-blue);;
 }

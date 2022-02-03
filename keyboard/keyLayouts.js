@@ -20,7 +20,7 @@ export const enQWERTYLayout = {
   'h': { 'h': 'high' },
   'j': { 'dʒ': 'giant', 'ʒ': 'beige' },
   'k': { 'k': 'kind' },
-  'l': { 'l': 'lie' },
+  'l': { 'l': 'lie', 'əl': 'bottle' },
   'ˈ': {'ˈ': 'primary stress'},
   'backspace': null,
   'z': { 'z': 'zoo' },

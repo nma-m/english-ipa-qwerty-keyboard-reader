@@ -1,33 +1,160 @@
-.tooltip {
+:root {
+  /* COLORS */
+  --green: rgb(52, 199, 89);
+  --blue: rgb(0, 122, 255);
+  --accessible-blue: rgb(0, 64, 221);
+  --active-blue: rgb(50, 173, 230);
+  --gray6: rgb(242, 242, 247);
+  --gray3: rgb(199, 199, 204);
+  --gray2: rgb(174, 174, 178);
+  --gray1: rgb(142, 142, 147);
+
+  /* FONTS */
+  --inter: 'Inter', sans-serif;
+
+  /* KEYBOARD-SPECIFIC */
+  --min-keyboard-width: 488px;
+  --border-radius: 2px;
+}
+
+html, body {
+  overflow: hidden;
+  font-family: var(--inter);
+}
+
+body {
+  background-color: white;
+  margin: 0;
+}
+
+main {
+  margin: auto;
+  width: 66%;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+h1 {
+  margin-top: 0;
+  display: inline;
+  font-weight: 100;
+}
+
+.open-about {
+  display: inline;
+  margin: 0 auto;
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: var(--gray1);
+  color:var(--blue);
+  cursor: pointer;
+}
+
+.open-about:active {
+  color: var(--active-blue);
+}
+
+.inputs {
   position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
+  margin: 0 auto;
+  top: 147px;
+  width: 300px;
 }
 
-.tooltip #tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
+input.use-keyboard-input {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 100px;
+  padding: 10px 100px 10px 20px; 
+  line-height: 1;
+  box-sizing: border-box;
+  outline: none;
+  z-index: 0;
+  font-family: var(--inter);
+  font-weight: 400;
+}
+
+button.copy {
   position: absolute;
+  right: 3px; 
+  top: 3px;
+  bottom: 3px;
+  width: 3em;
+  border: 0;
+  background: var(--gray2);
+  color: black;
+  margin: 0;
+  padding: 0;
+  border-radius: 100px;
   z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -60px;
-  opacity: 0;
-  /* transition: opacity 0.3s; */
+  transition: all .3s;
+  font-family: var(--inter);
+  font-weight: 400;
 }
 
-.tooltip #tooltiptext::after {
-  content: "";
+.modal {
+  display: none;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--gray6);
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  max-width: 66vw;
+  height: auto;
+  max-height: 80vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: var(--inter);
+}
+
+.close-about {
+  position: sticky;
+  top: 0;
+  align-self: flex-end;
+  color: rgb(58, 58, 60);
+}
+
+.close-about:hover,
+.close-about:focus {
+  color: var(--gray1);
+  cursor: pointer;
+}
+
+.modal-content > h1, p, ul {
+  padding: 0 24px; /* width of the close icon */
+}
+
+p {
+  font-weight: 400;
+}
+
+
+a, a:visited {
+  font-weight: 400;
+  color: var(--accessible-blue);
+}
+
+a:active{
+  color: var(--blue);
+}
+
+ul {
+  margin: 0 auto 0 2em;
 }
