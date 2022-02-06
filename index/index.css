@@ -42,18 +42,16 @@ h1 {
   font-weight: 100;
 }
 
-.open-about {
+#open-about {
   display: inline;
-  margin: 0 auto;
   background: none!important;
   border: none;
   padding: 0!important;
-  color: var(--gray1);
-  color:var(--blue);
+  color: var(--blue);
   cursor: pointer;
 }
 
-.open-about:active {
+#open-about:active {
   color: var(--active-blue);
 }
 
@@ -95,7 +93,7 @@ button.copy {
   font-weight: 400;
 }
 
-.modal {
+#modal-overlay {
   display: none;
   flex-flow: row nowrap;
   justify-content: center;
@@ -109,7 +107,7 @@ button.copy {
   background-color: rgba(0,0,0,0.4);
 }
 
-.modal-content {
+#modal-content {
   display: flex;
   flex-direction: column;
   background-color: var(--gray6);
@@ -121,23 +119,29 @@ button.copy {
   max-height: 80vh;
   overflow-x: hidden;
   overflow-y: auto;
+  z-index: 6;
   font-family: var(--inter);
 }
 
-.close-about {
+#close-about {
   position: sticky;
   top: 0;
   align-self: flex-end;
   color: rgb(58, 58, 60);
-}
-
-.close-about:hover,
-.close-about:focus {
-  color: var(--gray1);
+  background: none!important;
+  border: none;
+  padding: 0!important;
   cursor: pointer;
 }
 
-.modal-content > h1, p, ul {
+#close-about:hover,
+#close-about:focus {
+  color: var(--gray1);
+  border: 2px;
+  cursor: pointer;
+}
+
+#modal-content > h1, p, ul {
   padding: 0 24px; /* width of the close icon */
 }
 
@@ -149,6 +153,11 @@ p {
 a, a:visited {
   font-weight: 400;
   color: var(--accessible-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 a:active{

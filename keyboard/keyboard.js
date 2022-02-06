@@ -184,8 +184,6 @@ const Keyboard = {
 	},
 
 	_triggerEvent(handlerName) {
-		console.log(handlerName + ' triggered');
-
 		if (typeof this.eventHandlers[handlerName] == 'function') {
 			this.eventHandlers[handlerName](this.properties.value);
 		}
