@@ -29,29 +29,43 @@ body {
 
 main {
   margin: auto;
-  width: 66%;
   width: 100vw;
   height: 100vh;
   overflow-x: auto;
   overflow-y: auto;
+  text-align: center;
 }
 
 h1 {
   margin-top: 0;
   display: inline;
+  font-size: 48px;
   font-weight: 100;
 }
 
-#open-about {
+.title {
+  margin-top: 48px;
+}
+
+h4 {
+  margin: 10px 0;
+  font-size: 20px;
+  font-weight: 100;
+  font-style: italic;
+}
+
+#read-more {
   display: inline;
   background: none!important;
   border: none;
   padding: 0!important;
   color: var(--blue);
+  text-decoration: underline;
   cursor: pointer;
 }
 
-#open-about:active {
+
+#read-more:active {
   color: var(--active-blue);
 }
 
@@ -82,13 +96,13 @@ button.copy {
   bottom: 3px;
   width: 3em;
   border: 0;
-  background: var(--gray2);
-  color: black;
+  background: var(--blue);
+  color: white;
   margin: 0;
   padding: 0;
   border-radius: 100px;
   z-index: 1;
-  transition: all .3s;
+  transition: width .3s, background .3s;
   font-family: var(--inter);
   font-weight: 400;
 }
@@ -113,7 +127,6 @@ button.copy {
   background-color: var(--gray6);
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
   max-width: 66vw;
   height: auto;
   max-height: 80vh;
