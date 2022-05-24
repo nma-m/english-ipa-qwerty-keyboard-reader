@@ -15,10 +15,10 @@
   </head>
   <body>
     <main id="home">
-      <h1>IPA Utility</h1>
-      <button type="button" id="open-about" onclick="openAbout()">
-        <span id="info" class="material-icons">info</span>
-      </button>
+      <h1>IPA Keyboard</h1>
+      <h4>the International Phonetic Alphabet for laypeople
+        <button type="button" id="read-more" onclick="openAbout()">more</button>
+      </h4>
       <div class="inputs">
         <input type="text" id="textbox" class="use-keyboard-input" size="30" spellcheck="false" placeholder="/uːmə mbɛlɛˈdɔːˌgoʊ/">
         <button type="button" id="copy-button" class="copy" onclick="copyToClipboard()">
@@ -35,26 +35,23 @@
           <span class="material-icons-outlined">close</span>
         </button>
         <h1 id="about-main-content">About</h1>
-        <p>The IPA Utility is a combination notation keyboard and reader to allow laypeople like me
-          to use the International Phonetic Alphabet (IPA) for whatever reason. I wanted to spell out
-          the pronunciation of my name without having to search through an IPA symbol table. 
-        <p>Using <a href="https://en.wikipedia.org/wiki/Help:IPA/English" target="blank">Wikipedia</a>
-          for reference, IPA symbols have been arranged by letter relevancy.
-          For example, aɪ is a sound that's associated with the letter i, so it can be
-          found by hovering over the i key. dʒ is a sound that can come from the letter
-          g or j, so you can click it from either key.
-          These associations are not part of the IPA. They were determined by me
-          personally in an effort to devise and implement a solution that's
-          layperson-friendly.
-          Additionally, word examples for symbol pronunciation are provided next to
-          each symbol.
-          You can also interact with the on-screen keyboard using tab and space/enter on your physical keyboard.
+        <p>
+          The IPA Keyboard allows laypeople like me to use the IPA without having to search through an IPA symbol table.
         </p>
-        <p>These pages were also referenced in the making of the IPA Utility:</p>
+        <p>Using <a href="https://en.wikipedia.org/wiki/Help:IPA/English" target="blank">Wikipedia</a>,
+          IPA symbols have been arranged by letter relevancy. For example, aɪ is a sound that's associated with the letter i, so
+          it can be found by hovering over the i key. dʒ is a sound that can come from the letter g or j, so you can click it from
+          either key. These associations aren’t official or anything, I just created them using my best judgment in an effort to
+          devise and implement this layperson-friendly solution. Additionally, word examples for symbol pronunciation are provided
+          next to each symbol. You can also interact with the on-screen keyboard using tab and space/enter on your physical
+          keyboard.
+        </p>
+        <p>The following was referenced in the making of this project:</p>
         <ul>
           <li><a href="https://www.youtube.com/watch?v=N3cq0BHDMOY" target="blank">Virtual Keyboard in JavaScript</a></li>
           <li><a href="https://westonruter.github.io/ipa-chart/keyboard/" target="blank">https://westonruter.github.io/ipa-chart/keyboard/</a></li>
-          <li><a href="http://ipa-reader.xyz/" target="blank">http://ipa-reader.xyz/</a></li>
+          <li><a href="http://ipa-reader.xyz/" target="blank">http://ipa-reader.xyz/</a> (go here to listen to what you typed!)
+</li>
           <li><a href="https://ipa.typeit.org/" target="blank" id="modal-last-focusable">https://ipa.typeit.org/</a></li>
         </ul>
       </div>
