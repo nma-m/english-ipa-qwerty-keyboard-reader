@@ -41,6 +41,7 @@ const Keyboard = {
 			});
 			
 			element.addEventListener('blur', () => {
+				// remember what's in the textbox and caret position
 				this.properties.value = element.value;
 				this.properties.caretPos = element.selectionStart;
 			});
@@ -60,7 +61,7 @@ const Keyboard = {
 		// [helper] Insert input at caret
 		const insertAtCaret = (input) => {
 			const textBox = document.getElementById('textbox');
-			if (textBox.selectionStart == textBox.selectionEnd) { // caret
+			if (textBox.selectionStart == textBox.selectionEnd) { // insert at caret
 				this.properties.value = this.properties.value.substring(0, this.properties.caretPos)
 					+ input
 					+ this.properties.value.substring(this.properties.caretPos);
@@ -71,7 +72,7 @@ const Keyboard = {
 				this.properties.value = this.properties.value.substring(0, startPos)
 					+ input
 					+ this.properties.value.substring(endPos, this.properties.value.length);
-				this.properties.caretPos += input.length;
+				this.properties.caretPos = startPos + input.length;
 			}
 		}
 
@@ -127,7 +128,7 @@ const Keyboard = {
 					keyElement.innerHTML = createIconHTML('backspace');
 
 					keyElement.addEventListener('click', () => {
-						this.properties.value = this.properties.value.substring(0, this.properties.value.length - 1);
+						this.properties.value = this.properties.value.substring(0, this.properties.caretPos - 1) + this.properties.value.substring(this.properties.caretPos, this.properties.value.length);
 						this.properties.caretPos -= 1;
 						this._triggerEvent('oninput');
 					});
