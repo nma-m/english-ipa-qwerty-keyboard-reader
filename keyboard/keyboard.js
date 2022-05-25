@@ -198,4 +198,9 @@ const Keyboard = {
 window.addEventListener('DOMContentLoaded', function () {
 	Keyboard.init();
 	document.getElementById('textbox').focus();
+
+	document.getElementById('textbox').addEventListener('focus', () => {
+		document.getElementById('textbox').selectionStart = Keyboard.properties.caretPos;
+		document.getElementById('textbox').selectionEnd = Keyboard.properties.caretPos;
+	});
 });
